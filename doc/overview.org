@@ -1,0 +1,48 @@
+* PROJECT OVERVIEW
+** FEATURES
+*** Receives ethernet frames from a real network interface.
+*** Parses ethernet + ipv4 + udp.
+*** Responds to a specific UDP port.
+*** ARP responder.
+*** ICMP echo so I can PING the fpga.
+
+** ETHERNET MAC INTERFACE
+*** MAC RX
+**** Accept the ethernet frame and store the data in a FIFO
+*** MAX TX
+**** Transmits frames constructed by the frame generator.
+- Frames are transmitted a crumb (two bits) at a time from lsb
+  to msb.
+**** If we will have 1 crumb left in the shift reg after next shift
+- If we start the clock cycle with num_crumbs == 2'd0 then when we
+  shift (this clock) we will have emptied the shift register.
+- Which means that we need to accept data next clock (data in and data out)
+
+** TEST BENCHES
+*** cocotb
+*** pyuvm
+
+** SIMULATOR
+*** verilator
+
+** WAVEFORM VIEWER
+*** gtkwave or surfer
+
+** SYNTHESIZER
+*** yosys
+
+** UVM TESTBENCH
+*** mac_tx_env class
+The environment class consists of the following
+1) Monitors
+   - a monitor for the ready_valid interface to the dut
+   - a monitor for the tx_rmii interface output from the dut
+2) Scoreboard
+   - Gathers all data (bytes) input to the dut and all data output
+     from the dut (crumbs). The scoreboard reconstructs the outputs crumbs
+     back into bytes and directly compares with the input bytes. Bytes input
+     and bytes output from the DUT should be identical.
+3) Driver
+   - Processes sequence items
+4) uvm_sequencer
+   - Queues sequence items and passes them to the driver

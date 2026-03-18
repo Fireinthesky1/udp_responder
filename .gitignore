@@ -1,0 +1,7 @@
+*~
+syn/
+sim/__pycache__/
+sim/sim_build/
+*.xml
+*.fst
+*.dat

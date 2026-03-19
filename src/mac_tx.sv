@@ -115,8 +115,8 @@ module mac_tx
         end // case: final_byte_st
 
         default: begin // idle_st
-          data_starvation <= 1'b0; // Clear Data starvation flag.
-          ready           <= 1'b1; // Always ready to receive in idle_st.
+          data_starvation <= 1'b0;   // Clear Data starvation flag.
+          ready           <= 1'b1;   // Always ready to receive in idle_st.
           if (handshake == 1'b1 && sof == 1'b1) begin
             ready      <= 1'b0;      // Apply backpressure
             txen       <= 1'b1;      // begin transmission next clock

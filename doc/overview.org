@@ -1,4 +1,8 @@
 * PROJECT OVERVIEW
+** TODO Rewrite the testbench using system-verilog uvm
+** TODO Create a nix flake for the developement environment of the project
+** TODO Build the project using the nix build system.
+
 ** FEATURES
 *** Receives ethernet frames from a real network interface.
 *** Parses ethernet + ipv4 + udp.

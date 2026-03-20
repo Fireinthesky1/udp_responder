@@ -10,6 +10,9 @@ of data. Once tx\_en asserts this component shall output data every clock cycle
 until the entire frame has been transmitted. This component shall report
 data\_starvation.
 
+## Frame Check Sequence
+TODO
+
 ## Interface
 | name | direction | width | description |
 | :--- | :-------- | :---- | :---------- |

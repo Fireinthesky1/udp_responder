@@ -28,7 +28,7 @@
 // - This component may apply back pressure to the upstream component as needed.
 ////////////////////////////////////////////////////////////////////////////////
 
-//TODO(HICKS): module in developement
+//TODO(HICKS): CRC
 
 module mac_tx
   (

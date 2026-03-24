@@ -111,7 +111,7 @@ module mac_tx
             ready     <= 1'b1;
             txen      <= 1'b0;
             fsm_state <= idle_st;
-	  end
+          end
         end // case: final_byte_st
 
         default: begin // idle_st

@@ -17,6 +17,10 @@
 // DETAILS
 //
 // Interface for the mac_tx component.
+// - Because there are two drivers to for the mac_tx component; one for the
+//   Ready-Valid interface and another for the RMII interface, we use modports
+//   in the following interface.
+// - Note that the modport directions are from the perspective of the driver.
 interface mac_tx_if (input clk);
   logic       reset;
   logic       ready;
@@ -27,4 +31,19 @@ interface mac_tx_if (input clk);
   logic       txen;
   logic [1:0] txd;
   logic       data_starvation;
+  modport rv_driver_mp
+  (
+    input  clk,
+    input  ready,
+    output valid.
+    output data,
+    output sof,
+    output eof
+  );
+  modport rmii_driver_mp
+  (
+    input clk,
+    input txen,
+    input txd,
+  );
 endinterface; // mac_tx_if

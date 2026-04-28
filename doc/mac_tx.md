@@ -11,7 +11,12 @@ until the entire frame has been transmitted. This component shall report
 data\_starvation.
 
 ## Frame Check Sequence
-TODO
+The CRC value is computed over the contents of the destination address, the
+source address, the length/type fields, the MAC client data, and the PAD as
+per the 802.3 specification. The polynomial is 33-bit hex: 33'h104611DB7.
+Data travels through (TODO) pipeline stages to account for the latency of the
+`crc_32` component.
+
 
 ## Interface
 | name | direction | width | description |
